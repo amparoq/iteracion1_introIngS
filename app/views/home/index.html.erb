@@ -1,0 +1,57 @@
+<style>
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-gap: 10px; 
+}
+
+.grid-item {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  text-align: center;
+  border-radius: 15px;
+  width: 70%;
+}
+
+.user-icon {
+  font-size: 48px; 
+  color: #484848;
+  margin-bottom: 7px;
+}
+
+</style>
+
+<div style= "margin-left: 40px; margin-top: 30px;">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <div>
+    <h2> Inicio </h2> 
+    <hr style="border: 1.5px solid #bdb9b9; margin: 0; width: 70%; margin-top: 20px;">
+    <h3 style= "margin-top: 20px;"> Proyecto </h3>
+    <div style= "width: 70%;">
+      <% @groups.each do |group| %>
+        <h4> Grupos </h4>
+        <p style= "margin-left: 320px; font-weight: bold;"><%= group.name %></p> 
+        <div class="grid-container">
+        <% @users_in_groups[group].each do |user| %>
+          <div class="grid-item">
+            <i class="user-icon fas fa-user-circle"></i>
+            <p style= "margin-bottom: 1px;"><%= user.name %></p> 
+            <p><%= user.role %></p>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+
+
+  </div>
+
+
+
+
+
+</div>

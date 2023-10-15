@@ -1,26 +1,45 @@
-<h2>Log in</h2>
+<div style= "display: flex; background: rgb(219,236,255); background: linear-gradient(90deg, rgba(219,236,255,1) 0%, rgba(187,231,255,1) 29%, rgba(110,207,235,1) 75%); justify-content: center; align-items: center; height: 100vh; text-align: center; flex-direction: column;">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div style="background-color: #ffffff; height: 400px; padding: 20px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); max-width: 350px; width: 100%; text-align: center;">
+    <h2 style= "font-weight: bold;">Log in</h2>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="field", style= "margin-top: 15px;">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "border-radius: 3px; border: 1px solid black;" %>
+      </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <div class="field", style= "margin-top: 15px;">
+        <%= f.label :password %><br />
+        <%= f.password_field :password, autocomplete: "current-password", style: "border-radius: 3px; border: 1px solid black;" %>
+      </div>
+
+      <% if devise_mapping.rememberable? %>
+        <div class="field", style= "margin-top: 15px;">
+          <%= f.check_box :remember_me %>
+          <%= f.label :remember_me %>
+        </div>
+      <% end %>
+
+      <div class="actions", style= "margin-top: 15px;">
+        <%= f.submit "Iniciar Sesión", style: "background-color: #4caf50; 
+        color: #ffffff; 
+        border: none; 
+        padding: 7px 20px;
+        border-radius: 5px; 
+        font-size: 16px; cursor: pointer;" %>
+      </div>
+    <% end %>
+    <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <div style= "margin-top: 18px;">
+      No tienes cuenta? <%= link_to "Registrate!", new_registration_path(resource_name) %><br />
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <% end %>
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <div style= "margin-top: 5px;">
+      <%= link_to "Olvidaste tu contraseña?", new_password_path(resource_name) %><br />
+    </div>
+    <% end %>
   </div>
-<% end %>
+</div>
 
-<%= render "devise/shared/links" %>

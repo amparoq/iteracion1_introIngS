@@ -10,12 +10,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert"><%= alert %></p>
+  <body style= "background: #f9f9f9; font-family: roboto, sans-serif;">
+    <% if user_signed_in? %>
+      <%= render 'layouts/navbar' %>
     <% end %>
     <%= yield %>
   </body>

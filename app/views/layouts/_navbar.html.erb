@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style= "background: #eff2d8;">
+  <div>
+    <ul class="navbar-nav d-flex">
+      <li class="nav-item p-2">
+        <%= link_to 'Inicio', root_path, class: 'nav-link active', style: "color: black; font-weight: 500;"%>
+      </li>
+      <li class="nav-item p-2">
+        <%= link_to 'Tablero', tasks_path, class: 'nav-link active', style: "color: black; font-weight: 500;" %>
+      </li>
+      <li class="nav-item p-2">
+      <%= link_to 'Bandeja de entrada', tasks_path, class: 'nav-link active', style: "color: black; font-weight: 500;" %>
+      </li>
+      <li class="nav-item ml-auto p-2">
+        <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link', style: "color: black; font-weight: 500;" %>
+      </li>
+    </ul>
+  <div>
+</nav>
+<hr style="border: 1.5px solid #bdb9b9; margin: 0;">

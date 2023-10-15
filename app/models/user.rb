@@ -5,9 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
     enum role: {
-        desarrollador: 0,
-        supervisor: 1,
-        gerente: 2
+        Desarrollador: 0,
+        Supervisor: 1,
+        Gerente: 2
     }
+    
+  has_many :user_groups
+  has_many :groups, through: :user_groups
 
 end
