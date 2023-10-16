@@ -20,6 +20,45 @@
   color: #484848;
   margin-bottom: 7px;
 }
+.progress-bar {
+  width: 100%;
+  height: 16px;
+  background-color: #ccc;
+  border: 1px solid #0074d9;
+  border-radius: 8px;
+  position: relative;
+  margin-top: 10px;
+}
+
+.progress-bar-inner {
+  width: 0;
+  height: 100%;
+  border-radius: 6px;
+  background-color: #0074d9;
+  transition: width 0.3s;
+}
+
+.task-details {
+  flex: 1;
+}
+
+.boton {
+  width: 90px;
+  display: inline-block;
+  padding: 10px;
+  background-color: #0074d9;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.task-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 20px; /* Ajusta este valor según tu preferencia para la separación entre los datos y el progreso. */
+}
+
 
 </style>
 
@@ -31,6 +70,7 @@
     <h2> Inicio </h2> 
     <hr style="border: 1.5px solid #bdb9b9; margin: 0; width: 70%; margin-top: 20px;">
     <h3 style= "margin-top: 20px;"> Proyecto </h3>
+
     <div style= "width: 70%;">
       <% @groups.each do |group| %>
         <h4> Grupos </h4>
@@ -46,12 +86,28 @@
       </div>
       <% end %>
     </div>
-
+  <div style= "width: 70%;">
+  </div>
+  <h4> Tareas </h4>
+  <div class="grid-container">
+    <% @tasks.each do |task| %>
+      <div class="grid-item">
+        <div class="task-details">
+          <p style="font-weight: bold;"><%= task.name %></p>
+          <p>Creado/a por: <%= User.find(task.user_id).name %></p>
+          <p>Descripcion: <%= task.description %></p>
+        </div>
+        <div class="task-progress">
+          <div class="progress-bar">
+          <div class="progress-bar-inner" style="width: <%= task.progress %>%;"></div>
+          </div>
+          <p>Progreso: <%= task.progress %></p>
+        </div>
+        <a href="<%= task_path(task) %>" class = "boton">Ir</a>
+      </div>
+    <% end %>
+  </div>
+  
 
   </div>
-
-
-
-
-
 </div>

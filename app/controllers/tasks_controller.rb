@@ -3,7 +3,9 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @tasks.each do |task|
+      @users_in_tasks[task] = task.users
+    end
   end
 
   # GET /tasks/1 or /tasks/1.json

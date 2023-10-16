@@ -7,6 +7,7 @@ class HomeController < ApplicationController
         @groups.each do |group|
           @users_in_groups[group] = group.users
         end
+        @tasks = Task.where(group_id: @groups.pluck(:id),status: 0)
     end
 
 
