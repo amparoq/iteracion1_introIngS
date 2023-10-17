@@ -1,19 +1,60 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style= "background: #eff2d8;">
-  <div>
-    <ul class="navbar-nav d-flex">
-      <li class="nav-item p-2">
-        <%= link_to 'Inicio', root_path, class: 'nav-link active', style: "color: black; font-weight: 500;"%>
-      </li>
-      <li class="nav-item p-2">
-        <%= link_to 'Tablero', tasks_path, class: 'nav-link active', style: "color: black; font-weight: 500;" %>
-      </li>
-      <li class="nav-item p-2">
-      <%= link_to 'Bandeja de entrada', "/notifications", class: 'nav-link active', style: "color: black; font-weight: 500;" %>
-      </li>
-      <li class="nav-item ml-auto p-2">
-        <%= button_to 'Log Out', destroy_user_session_path, method: :delete, class: 'nav-link', style: "color: black; font-weight: 500;" %>
-      </li>
-    </ul>
-  <div>
-</nav>
-<hr style="border: 1.5px solid #bdb9b9; margin: 0;">
+
+<html>
+<head>
+    <style>
+        /* Style for the navigation bar */
+        .navbar {
+            background-color: #eff2d8; /* Yellow background */
+            color: #000; /* Black font color */
+            display: flex;
+            justify-content: space-between;
+            padding: 20px; /* Increased padding for a bigger navbar */
+        }
+
+        /* Style for the left side of the navigation bar */
+        .navbar-left {
+            display: flex;
+        }
+
+        .navbar-left a {
+            text-decoration: none;
+            color: #000; /* Black font color */
+            padding: 10px;
+        }
+
+        /* Style for the right side of the navigation bar */
+        .navbar-right {
+            display: flex;
+        }
+
+        .navbar-right .user-info {
+            text-align: right;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="navbar-left">
+            <%= link_to 'Inicio', root_path, class: 'nav-link active', style: "color: black; font-weight: 500;" %>
+            <%= link_to 'Tablero', tasks_path, class: 'nav-link active', style: "color: black; font-weight: 500;" %>
+            <%= link_to 'Bandeja de entrada', "/notifications", class: 'nav-link active', style: "color: black; font-weight: 500;" %>
+        </div>
+        <div class="navbar-right">
+          <% if current_user %>
+            <p style="margin: 0; margin-right: 10px;"> <!-- Add margin-right property -->
+              <span style="color: black; font-weight: 500;">
+                <%= "#{current_user.name} #{current_user.last_name}" %>
+              </span>
+              <br>
+              <span style="color: grey; font-size: 80%;">
+                <%= "#{current_user.role}" %>
+              </span>
+            </p>
+          <% end %>
+        </div>
+
+
+    </div>
+</body>
+</html>
