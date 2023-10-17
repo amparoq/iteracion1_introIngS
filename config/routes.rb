@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :projects
   resources :groups
   resources :comments
+
+  resources :notifications, only: [:index]
+  
   devise_for :users
   root "home#index"
   

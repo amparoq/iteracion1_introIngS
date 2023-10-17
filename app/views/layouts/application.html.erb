@@ -1,3 +1,21 @@
+<style>
+
+.navbar-container {
+  position: relative;
+}
+
+.new_task_button {
+  position: absolute;
+  top: 10px; 
+  right: 10px;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+
+</style>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -13,6 +31,9 @@
   <body style= "background: #f9f9f9; font-family: roboto, sans-serif;">
     <% if user_signed_in? %>
       <%= render 'layouts/navbar' %>
+      <div class="navbar-container">
+        <a href=<%= new_task_path %> class="btn btn-info new_task_button">New Task</a>
+      </div>
     <% end %>
     <%= yield %>
   </body>

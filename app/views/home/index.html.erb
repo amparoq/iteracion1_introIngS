@@ -15,6 +15,12 @@
   width: 70%;
 }
 
+.new_task {
+  position: absolute,
+  top: 0,
+  right: 0
+}
+
 .user-icon {
   font-size: 48px; 
   color: #484848;
@@ -86,8 +92,7 @@
       </div>
       <% end %>
     </div>
-  <div style= "width: 70%;">
-  </div>
+  <hr>
   <h4> Tareas </h4>
   <div class="grid-container">
     <% @tasks.each do |task| %>
