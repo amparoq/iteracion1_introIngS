@@ -1,8 +1,8 @@
-
+<!DOCTYPE html>
 <html>
 <head>
     <style>
-        /* Style for the navigation bar */
+        /* Styles for the navigation bar */
         .navbar {
             background-color: #eff2d8; /* Yellow background */
             color: #000; /* Black font color */
@@ -11,7 +11,7 @@
             padding: 20px; /* Increased padding for a bigger navbar */
         }
 
-        /* Style for the left side of the navigation bar */
+        /* Styles for the left side of the navigation bar */
         .navbar-left {
             display: flex;
         }
@@ -20,41 +20,60 @@
             text-decoration: none;
             color: #000; /* Black font color */
             padding: 10px;
+            font-size: 16px; /* Increase the font size */
         }
 
-        /* Style for the right side of the navigation bar */
+        /* Styles for the right side of the navigation bar */
         .navbar-right {
             display: flex;
+            align-items: center; /* Center vertically within the navbar */
         }
 
         .navbar-right .user-info {
             text-align: right;
             padding: 10px;
+            font-size: 16px; /* Increase the font size */
+        }
+
+        .user-icon {
+            font-size: 48px; 
+            color: #484848;
+            margin-bottom: 7px;
+        }
+
+        .profile-button {
+            color: white; /* Button text color */
+            padding: 5px 10px; /* Button padding */
+            border: none; /* No button border */
+            border-radius: 5px; /* Rounded button corners */
+            cursor: pointer; /* Add cursor on hover */
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="navbar">
         <div class="navbar-left">
-            <%= link_to 'Inicio', root_path, class: 'nav-link active', style: "color: black; font-weight: 500;" %>
-            <%= link_to 'Tablero', tasks_path, class: 'nav-link active', style: "color: black; font-weight: 500;" %>
-            <%= link_to 'Bandeja de entrada', "/notifications", class: 'nav-link active', style: "color: black; font-weight: 500;" %>
+            <%= link_to 'Inicio', root_path, class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
+            <%= link_to 'Tablero', tasks_path, class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
+            <%= link_to 'Bandeja de entrada', "/notifications", class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
         </div>
         <div class="navbar-right">
           <% if current_user %>
-            <p style="margin: 0; margin-right: 10px;"> <!-- Add margin-right property -->
-              <span style="color: black; font-weight: 500;">
+            <div class="user-info">
+              <span style="color: black; font-weight: 500; font-size: 16px;">
                 <%= "#{current_user.name} #{current_user.last_name}" %>
               </span>
               <br>
               <span style="color: grey; font-size: 80%;">
                 <%= "#{current_user.role}" %>
               </span>
-            </p>
+            </div>
+            <%= link_to user_path(current_user) do %>
+              <i class="user-icon fas fa-user-circle"></i>
+            <% end %>
           <% end %>
         </div>
-
-
     </div>
 </body>
 </html>

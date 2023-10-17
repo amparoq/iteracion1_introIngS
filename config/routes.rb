@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index]
   
   devise_for :users
+  resources :users, only: [:index, :show, :edit, :update]
+
   root "home#index"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

@@ -1,10 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @user %>
+<div style="background-color: #f7f7f7; border: 1px solid #ddd; padding: 20px; text-align: center; max-width: 400px; margin: 0 auto; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 5px;">
+  <h2>User Profile</h2>
 
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
+  <div style="margin-top: 20px;">
+    <p><strong>Name:</strong> <%= @user.name %></p>
+    <p><strong>Last Name:</strong> <%= @user.last_name %></p>
+    <p><strong>Email:</strong> <%= @user.email %></p>
+    <p><strong>Telephone:</strong> <%= @user.telephone %></p>
+    <p><strong>Role:</strong> <%= @user.role %></p>
+  </div>
 
-  <%= button_to "Destroy this user", @user, method: :delete %>
+  <div style="margin-top: 20px;">
+    <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #007bff; background-color: #007bff; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
+
+    <%= button_to "Destroy this user", @user, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #dc3545; background-color: #dc3545; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
+
+    <%= link_to "Back to users", users_path, class: "btn btn-secondary", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #ccc; background-color: #ccc; color: #000; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
+  </div>
 </div>
