@@ -1,10 +1,93 @@
-<h1>Editing task</h1>
 
-<%= render "form", task: @task %>
+<style>
+
+.field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.field label {
+  flex: 0 0 auto; 
+  margin-right: 10px;
+}
+
+.field select, .field input, .field textarea {
+  flex: 1;
+  width: auto;
+  max-width: 700px;
+  min-height: 30px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  align-items: center;
+  height: auto;
+  width: auto;
+}
+
+.card {
+  height: auto;
+  width: 800px;
+}
+
+.actions {
+  margin-top: 10px;
+}
+
+</style>
+
+<h2 style="margin-left: 260px; margin-top: 20px ">Editar tarea</h2>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body"> 
+      <%= form_with(model: @task, url: task_path(@task), method: :patch, local: true) do |form| %>
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= form.label :description %>
+          <%= form.text_area :description %>
+        </div>
+
+        <div class="field">
+          <%= form.label :status %>
+          <%= form.select :status, Task.statuses.keys %>
+        </div>
+
+        <div class="field">
+          <%= form.label :end_date %>
+          <%= form.date_field :end_date, min: Date.today %>
+        </div>
+
+        <div class="field">
+          <%= form.label :progress %>
+          <%= form.number_field :progress, max: 100 %>
+        </div>
+
+        <div class="field">
+          <%= form.label :group_id %>
+          <%= form.collection_select(:group_id, @my_groups, :id, :name, { include_blank: "Select a group" }) %>
+        </div>
+
+        <hr>
+
+        <div class="actions">
+          <%= form.submit class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <br>
 
 <div>
-  <%= link_to "Show this task", @task %> |
-  <%= link_to "Back to tasks", tasks_path %>
+  <%= link_to "Mostrar esta tarea", @task %> |
+  <%= link_to "Volver a las tareas", tasks_path %>
 </div>

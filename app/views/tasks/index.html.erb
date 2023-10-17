@@ -1,14 +1,29 @@
-<p style="color: green"><%= notice %></p>
+<div style= "margin-left: 40px; margin-top: 30px;">
 
-<h1>Tasks</h1>
+  <div>
+    <h4>Tareas</h4>
+    <hr>
+    <div class="card-container">
+      <% @tasks.each do |task| %>
+        <div class="card mb-3" style="width: 190vh;">
+          <div class="card-body">
+            <h5 class="card-title"><b><%= task.name %></b></h5>
+            <p class="card-text" style="color: #696969"><%= task.start_date %> | <%= task.end_date %></p>
+            <p class="card-text">Creado/a por: <%= task.user.name %></p>
+            <p class="card-text">Descripción: <%= task.description %></p>
+            <div class="progress">
+              <div class="progress-bar" style="width: <%= task.progress %>%;" aria-valuenow="<%= task.progress %>" aria-valuemin="0" aria-valuemax="100"><%= task.progress %>%</div>
+            </div>
+            <div style="display: flex;">
+              <a href=<%= edit_task_url(task) %> class= "btn btn-primary" style="margin-top: 10px;">Editar</a>
+              <% if task.user.id == current_user.id %>
+                <%= button_to "Eliminar", task, class: "btn btn-danger", style: "margin-top: 10px;", method: :delete, data: {turbo_method: :delete, turbo_confirm: '¿Estás seguro que quieres eliminar?'}%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 
-<div id="tasks">
-  <% @tasks.each do |task| %>
-    <%= render task %>
-    <p>
-      <%= link_to "Show this task", task %>
-    </p>
-  <% end %>
 </div>
-
-<%= link_to "New task", new_task_path %>
