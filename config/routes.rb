@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update]
 
   root "home#index"
+
+  resources :users do
+    get 'logout', on: :member, to: 'users#logout'
+  end
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

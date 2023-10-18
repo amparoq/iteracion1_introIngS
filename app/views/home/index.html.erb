@@ -12,7 +12,7 @@
   border: 1px solid #ccc;
   text-align: center;
   border-radius: 15px;
-  width: 70%;
+  width: 80%;
 }
 
 .new_task {
@@ -80,13 +80,15 @@
     <div style= "width: 70%;">
       <% @groups.each do |group| %>
         <h4> Grupos </h4>
-        <p style= "margin-left: 320px; font-weight: bold;"><%= group.name %></p> 
+        <p style= "font-weight: bold;"><%= group.name %>:</p> 
         <div class="grid-container">
         <% @users_in_groups[group].each do |user| %>
           <div class="grid-item">
             <i class="user-icon fas fa-user-circle"></i>
-            <p style= "margin-bottom: 1px;"><%= user.name %></p> 
-            <p><%= user.role %></p>
+            <p style= "margin-bottom: 1px; font-size: 16px;"><%= user.role %></p>
+            <p style="margin-bottom: 1px; font-size: 14px;">
+              <%= link_to user.name, user_path(user) %>
+            </p>
           </div>
         <% end %>
       </div>
