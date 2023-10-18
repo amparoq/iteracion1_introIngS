@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update]
+  get 'change_role', to: 'roles#change_role'
+  match 'change_role', to: 'roles#update_role', via: [:post, :patch]
 
   root "home#index"
 

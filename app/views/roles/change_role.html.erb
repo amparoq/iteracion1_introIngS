@@ -1,0 +1,77 @@
+<div style= "margin-left: 40px; margin-top: 30px;">
+    <div>
+        <h4>Cambiar role</h4>
+        <hr>
+        <div class="user-list">
+            <% if flash[:notice] %>
+                <div class="alert alert-success" role="alert">
+                    <%= flash[:notice] %>
+                </div>
+            <% end %>
+            <% @users.each do |user| %>
+                <%= form_for user, url: { action: 'update_role' }, html: { class: 'user-form' } do |f| %>
+                <div class="user-row">
+                    <%= "#{user.name} #{user.last_name}" %> - <span class="user-role"><%= user.role %></span>
+                    <%= f.select :role, options_for_select(['Desarrollador', 'Supervisor', 'Gerente']), { include_blank: 'Seleccionar Rol' }, class: 'custom-dropdown' %>
+                    <%= f.hidden_field :id, value: user.id %>
+                    <%= f.submit 'Guardar', class: 'btn btn-primary save-button' %>
+                </div>
+                <% end %>
+            <% end %>          
+        </div>
+    </div>
+</div>
+
+<style>
+.user-list {
+  margin: 20px;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.user-form {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.user-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.custom-dropdown {
+  width: 150px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.save-button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
+.user-role {
+  font-weight: bold;
+  color: #007bff;
+  margin-left: 10px;
+}
+
+
+</style>
