@@ -97,22 +97,25 @@
   <hr>
   <h4> Tareas </h4>
   <div class="grid-container">
-    <% @tasks.each do |task| %>
+  <% @tasks.each do |task| %>
+    <% if task.user_id == current_user.id %>
       <div class="grid-item">
         <div class="task-details">
           <p style="font-weight: bold;"><%= task.name %></p>
           <p>Creado/a por: <%= User.find(task.user_id).name %></p>
-          <p>Descripcion: <%= task.description %></p>
+          <p>Descripción: <%= task.description %></p>
         </div>
         <div class="task-progress">
           <div class="progress-bar">
-          <div class="progress-bar-inner" style="width: <%= task.progress %>%;"></div>
+            <div class="progress-bar-inner" style="width: <%= task.progress %>%;"></div>
           </div>
           <p>Progreso: <%= task.progress %></p>
         </div>
-        <a href="<%= task_path(task) %>" class = "boton">Ir</a>
+        <a href="<%= task_path(task) %>" class="boton">Ir</a>
       </div>
     <% end %>
+  <% end %>
+  
   </div>
   
 
