@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :user_groups
-  resources :tasks
+  resources :tasks do
+    resources :comments
+  end
   resources :projects
   resources :groups
   resources :comments

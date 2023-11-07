@@ -1,17 +1,66 @@
-<%= form_with(model: comment) do |form| %>
-  <% if comment.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+<style>
 
-      <ul>
-        <% comment.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  .card {
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-bottom: 10px;
+  }
+
+  .comment-card {
+    background-color: #f6efef;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+</style>
+
+<head>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="top-page">
+
+    <div id="wrapper">
+      <div class="container my-5">
+        <div class="card">
+          <div class="card-body align-items-center justify-content">
+            <div>
+            <h1>Crear un comentario</h1>
+            </div>
+
+            <%= form_with(model: comment, url: task_comments_path(@task.id)) do |form| %>
+                <% if comment.errors.any? %>
+                  <div style="color: red">
+                    <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+                    <ul>
+                      <% comment.errors.each do |error| %>
+                        <li><%= error.full_message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% end %>
+
+                <p>Recuerda que este comentario será visible para todos los integrantes del grupo</p>
+                <p class = "text-muted">Comentando en: "<%= @task.name %>"</p>
+
+                <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content" placeholder = "Escribe tu comentario..."></textarea>
+                </div>
+
+                <div class="text-center mt-4">
+                  <%= form.submit 'Publicar Comentario', class: 'btn btn-primary' %>
+                </div>
+                <div>
+                  <button class="btn btn-secondary" style = "margin-bottom: 10px;" onclick="history.back()" type = "button">Back</button>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
   </div>
-<% end %>
+
+</body>
