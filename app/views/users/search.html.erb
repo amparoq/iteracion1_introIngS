@@ -1,0 +1,22 @@
+<!-- app/views/users/search.html.erb -->
+<h2>Search Users</h2>
+
+<!-- Add the search input form -->
+<form method="get" action="<%= search_users_path %>" style="margin-bottom: 20px;">
+  <label for="query">Search by Name or Email:</label>
+  <input type="text" id="query" name="query" placeholder="Enter a name or email">
+  <button type="submit">Search</button>
+</form>
+
+<% if @search_results.any? %>
+  <h3>Search Results</h3>
+  <ul>
+    <% @search_results.each do |user| %>
+      <li>
+        <%= user.name %> (Email: <%= user.email %>)
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No users found.</p>
+<% end %>

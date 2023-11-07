@@ -5,6 +5,14 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+  # app/controllers/users_controller.rb
+  def search
+    if params[:query].present?
+      @search_results = User.where("name LIKE ? OR email LIKE ?", "%#{params[:query]}%", "%#{params[:query]}%")
+    else
+      @search_results = []
+    end
+  end
 
   # GET /users/1 or /users/1.json
   def show
@@ -20,6 +28,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
   end
+  
   
   # POST /users or /users.json
   def create

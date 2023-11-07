@@ -54,9 +54,10 @@
 <body>
     <div class="navbar">
         <div class="navbar-left">
-            <%= link_to 'Inicio', root_path, class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
-            <%= link_to 'Tablero', tasks_path, class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
-            <%= link_to 'Bandeja de entrada', "/notifications", class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
+          <%= link_to 'Inicio', root_path, class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
+          <%= link_to 'Tablero', tasks_path, class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
+          <%= link_to 'Bandeja de entrada', "/notifications", class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
+          <%= link_to 'Buscar Usuarios', search_users_path, class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
         </div>
         <div class="navbar-right">
           <% if current_user %>
