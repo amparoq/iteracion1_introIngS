@@ -76,7 +76,11 @@
     <h2> Inicio </h2> 
     <hr style="border: 1.5px solid #bdb9b9; margin: 0; width: 70%; margin-top: 20px;">
     <h3 style= "margin-top: 20px;"> Proyecto </h3>
-
+    <% @groups.each do |group| %>
+      <% if current_user.role.in?(["manager", "supervisor"]) || group.users.include?(current_user) %>
+        <%= link_to 'Detalles del Proyecto', project_path(group.project_id), class: 'btn btn-primary' %>
+      <% end %>
+    <% end %>
     <div style= "width: 70%;">
       <% @groups.each do |group| %>
         <h4> Grupos </h4>

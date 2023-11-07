@@ -1,9 +1,69 @@
-<h1>New project</h1>
+<style>
+  .field {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 
-<%= render "form", project: @project %>
+  .field label {
+    flex: 0 0 auto;
+    margin-right: 10px;
+  }
+
+  .field select, .field input, .field textarea {
+    flex: 1;
+    width: auto;
+    max-width: 700px;
+    min-height: 30px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    height: auto;
+    width: auto;
+  }
+
+  .card {
+    height: auto;
+    width: 800px;
+  }
+
+  .actions {
+    margin-top: 10px;
+  }
+</style>
+
+<h2 style="margin-left: 260px; margin-top: 20px">New project</h2>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <%= form_with(model: @project, url: projects_path, local: true) do |form| %>
+        <div class="field">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= form.label :description %>
+          <%= form.text_area :description, class: 'form-control' %>
+        </div>
+
+        <hr>
+
+        <div class="actions">
+          <%= form.submit class: "btn btn-secondary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <br>
 
 <div>
-  <%= link_to "Back to projects", projects_path %>
+  <%= link_to "Back to home", root_path %>
 </div>

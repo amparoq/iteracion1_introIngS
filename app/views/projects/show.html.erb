@@ -1,10 +1,177 @@
-<p style="color: green"><%= notice %></p>
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
 
-<%= render @project %>
+    .notice {
+      color: green;
+    }
 
-<div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
+    .project-details {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px 0;
+    }
 
-  <%= button_to "Destroy this project", @project, method: :delete %>
-</div>
+    .project-details h1 {
+      font-size: 32px; /* Tamaño de fuente más grande para el título */
+      color: #333; /* Color de texto más oscuro */
+    }
+
+    .groups-section {
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .groups-section h2 {
+      font-size: 20px;
+    }
+
+    .group-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .group-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .group-item h3 {
+      font-size: 18px;
+    }
+
+    .user-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .user-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .user-item p {
+      margin: 5px 0;
+    }
+
+    .user-item h5 {
+      font-size: 16px;
+    }
+
+    .task-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .task-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .task-item p {
+      margin: 5px 0;
+    }
+
+    .task-item strong {
+      font-weight: bold;
+    }
+
+    .task-item:last-child {
+      border: none;
+    }
+
+    .average-progress {
+      font-weight: bold;
+    }
+
+    .actions {
+      margin-top: 20px;
+    }
+
+    .actions a {
+      text-decoration: none;
+      margin-right: 20px;
+      color: blue; /* Color azul para enlaces de editar y volver */
+    }
+
+    .destroy-button {
+      background-color: #d9534f;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <p class="notice"><%= notice %></p>
+
+  <%= render @project %>
+
+  <div class="project-details">
+    <h1><%= @project.name %></h1>
+    <p><%= @project.description %></p>
+  </div>
+
+  <div class="groups-section">
+    <h2>Grupos:</h2>
+    <ul class="group-list">
+      <% @project.groups.each do |group| %>
+        <li class="group-item">
+          <h3><%= group.name %></h3>
+          <p><%= group.description %></p>
+
+          <h4>Usuarios del Grupo:</h4>
+          <ul class="user-list">
+            <% group.users.each do |user| %>
+              <li class="user-item">
+                <p><strong>Nombre:</strong> <%= user.name %> <%= user.last_name %></p>
+
+                <h5>Tareas del Usuario:</h5>
+                <ul class="task-list">
+                  <% user.tasks.each do |task| %>
+                    <li class="task-item">
+                      <p><strong>Nombre de la Tarea:</strong> <%= task.name %></p>
+                      <p><strong>Descripción de la Tarea:</strong> <%= task.description %></p>
+                      <p><strong>Progreso de la Tarea:</strong> <%= task.progress %>%</p>
+                      <!-- Mostrar otros atributos de la tarea si es necesario -->
+                    </li>
+                  <% end %>
+                </ul>
+
+                <p class="average-progress"><strong>Promedio de Progreso:</strong>
+                  <% if user.tasks.any? %>
+                    <%= user.tasks.average(:progress).to_f %>%</p>
+                  <% else %>
+                    No hay tareas asignadas.
+                  <% end %>
+                </p>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="actions">
+    <%= link_to "Edit this project", edit_project_path(@project) %> |
+    <%= link_to "Back to home", root_path %>
+  </div>
+
+  <div class="actions">
+    <%= button_to "Destroy this project", @project, method: :delete, class: "destroy-button" %>
+  </div>
+</body>
+</html>

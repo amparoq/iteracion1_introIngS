@@ -1,17 +1,32 @@
 <style>
+  .navbar-container {
+    position: relative;
+  }
 
-.navbar-container {
-  position: relative;
-}
+  .new_task_button {
+    position: absolute;
+    top: 70px; /* Ajusta la distancia desde la parte superior */
+    right: 10px;
+    padding: 10px 20px; /* Ajusta el relleno para un mejor aspecto */
+    background-color: #007bff; /* Cambia el color de fondo */
+    color: #fff; /* Cambia el color del texto */
+    border: none; /* Quita el borde */
+    border-radius: 5px; /* Agrega esquinas redondeadas */
+  }
 
-.new_task_button {
-  position: absolute;
-  top: 10px; 
-  right: 10px;
-  margin-top: 20px;
-  margin-right: 20px;
-  margin-bottom: 20px;
-}
+  .new_project_button {
+    position: absolute;
+    top: 130px; /* Ajusta la distancia desde la parte superior */
+    right: 10px;
+    padding: 10px 20px; /* Ajusta el relleno para un mejor aspecto */
+    background-color: #4caf50; /* Cambia el color de fondo */
+    color: #fff; /* Cambia el color del texto */
+    border: none; /* Quita el borde */
+    border-radius: 5px; /* Agrega esquinas redondeadas */
+  }
+</style>
+
+
 
 
 </style>
@@ -31,9 +46,12 @@
   <body style= "background: #f9f9f9; font-family: roboto, sans-serif;">
     <% if user_signed_in? %>
       <%= render 'layouts/navbar' %>
+      <div class="navbar-container" style="margin-top: 20px;">
+        <a href="<%= new_project_path %>" class="new_project_button">New Proyect</a>
+      </div>
       <div class="navbar-container">
         <a href=<%= new_task_path %> class="btn btn-info new_task_button">New Task</a>
-      </div>
+      </div> 
     <% end %>
     <%= yield %>
   </body>
