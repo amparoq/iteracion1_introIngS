@@ -1,10 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div class="card">
+    <div class="card-body">
+      <p><strong>Nombre:</strong> <%= @task.name %></p>
+      <p><strong>Creado/a por: </strong><%= User.find(@task.user_id).name %></p>
+      <p><strong>Descripción:</strong> <%= @task.description %></p>
+      <p><strong>Estado:</strong> <%= @task.status %></p>
+      <p><strong>Fecha de finalización:</strong> <%= @task.end_date %></p>
+      <p><strong>Progreso:</strong> <%= @task.progress %>%</p>
+      <p><strong>Grupo:</strong> <%= @group.name %></p>
+    </div>
+  </div>
+</div>
 
-<%= render @task %>
+<br>
 
 <div>
-  <%= link_to "Edit this task", edit_task_path(@task) %> |
-  <%= link_to "Back to tasks", tasks_path %>
-
-  <%= button_to "Destroy this task", @task, method: :delete %>
+  <%= link_to "Editar esta tarea", edit_task_path(@task), class: "btn btn-primary"%> |
+  <%= link_to "Volver a las tareas", tasks_path, class: "btn btn-secundary" %>
 </div>

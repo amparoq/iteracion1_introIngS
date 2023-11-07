@@ -1,42 +1,42 @@
-<h1 style="color: green; text-align: center;">Editing user</h1>
+<h1 style="color: green; text-align: center;">Editing user</h1><br><br><br><br>
 <div style="display: flex; justify-content: center; align-items: center; height: 50vh;">
   <div style="background-color: #f7f7f7; border: 1px solid #ddd; padding: 20px; max-width: 400px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); border-radius: 5px;">
       <%= form_for(@user) do |f| %>
         <div class="field">
-          <%= f.label :name %>
+          <%= f.label :name %>:<br>
           <%= f.text_field :name %>
         </div>
       
         <div class="field">
-          <%= f.label :last_name %>
+          <%= f.label :last_name %>:<br>
           <%= f.text_field :last_name %>
         </div>
       
         <div class="field">
-          <%= f.label :email %>
+          <%= f.label :email %>:<br>
           <%= f.text_field :email %>
         </div>
       
         <div class="field">
-          <%= f.label :telephone %>
+          <%= f.label :telephone %>:<br>
           <%= f.text_field :telephone %>
         </div>
       
         <div class="field">
-          <%= f.label :role %>
+          <%= f.label :role %>:<br>
           <%= f.text_field :role %>
         </div>
 
         <br>
         <div style=" text-align: center;">
         <div class="actions">
-          <%= f.submit "Update User", class: "btn btn-success" %>
+          <%= f.submit "Actualizar datos", class: "btn btn-success", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
         </div>
       <% end %>
 
     
     <div style="margin-top: 20px; text-align: center;">
-      <%= link_to "Show this user", @user, class: "btn btn-primary", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #007bff; background-color: #007bff; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
+      <%= link_to "Volver al perfil", @user, class: "btn btn-primary", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #007bff; background-color: #007bff; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
     </div>
   </div>
 </div>

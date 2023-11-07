@@ -12,10 +12,13 @@
   </div>
 
   <div style="margin-top: 20px;">
-    <%= link_to "Edit this user", edit_user_path(@user), class: "btn btn-primary", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #007bff; background-color: #007bff; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
+    <%= link_to "Editar datos", edit_user_path(@user), class: "btn btn-primary", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #007bff; background-color: #007bff; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
 
-    <%= button_to "Destroy this user", @user, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #dc3545; background-color: #dc3545; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
+    <%= button_to "Eliminar este usuario", @user, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #dc3545; background-color: #dc3545; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
 
-    <%= link_to "Back to users", users_path, class: "btn btn-secondary", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #ccc; background-color: #ccc; color: #000; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
+    <% if current_user && current_user.id == @user.id %>
+        <%= link_to "Logout", logout_user_path(@user), method: :get, class: "btn btn-secondary", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #6c757d; background-color: #6c757d; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
+    <% end %>
+
   </div>
 </div>

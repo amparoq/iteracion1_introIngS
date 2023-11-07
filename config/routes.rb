@@ -9,10 +9,18 @@ Rails.application.routes.draw do
   
   devise_for :users
   resources :users, only: [:index, :show, :edit, :update]
+  get 'change_role', to: 'roles#change_role'
+  match 'change_role', to: 'roles#update_role', via: [:post, :patch]
 
   root "home#index"
 
   get '/search_users', to: 'users#search', as: 'search_users'
+
+
+  resources :users do
+    get 'logout', on: :member, to: 'users#logout'
+  end
+  
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

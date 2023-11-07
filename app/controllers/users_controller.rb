@@ -15,8 +15,12 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1 or /users/1.json
-  def show
+  def show_current
     @user = User.find(current_user.id)
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -66,6 +70,11 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: "User was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def logout
+    sign_out(@user)
+    redirect_to root_path, notice: 'Logged out successfully.'
   end
 
   private

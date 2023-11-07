@@ -8,6 +8,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/1 or /tasks/1.json
   def show
+    @group = Group.find(@task.group_id)
   end
 
   # GET /tasks/new
