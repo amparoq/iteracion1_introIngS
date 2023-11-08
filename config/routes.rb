@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get '/search_users', to: 'users#search', as: 'search_users'
 
+  resources :messages, only: [:new, :create, :show, :index]
 
   resources :users do
     get 'logout', on: :member, to: 'users#logout'

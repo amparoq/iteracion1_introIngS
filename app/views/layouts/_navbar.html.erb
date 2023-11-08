@@ -48,6 +48,12 @@
             border-radius: 5px; /* Rounded button corners */
             cursor: pointer; /* Add cursor on hover */
         }
+
+        .mail-icon {
+          color: #FFD700;
+        }
+
+</style>
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
@@ -77,6 +83,9 @@
             </div>
             <%= link_to user_path(current_user) do %>
               <i class="user-icon fas fa-user-circle"></i>
+            <% end %>
+            <%= link_to messages_path, class: 'profile-button' do %>
+              <i class="fas fa-envelope mail-icon"></i>
             <% end %>
           <% end %>
         </div>

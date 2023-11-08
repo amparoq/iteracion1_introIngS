@@ -18,6 +18,8 @@
 
     <% if current_user && current_user.id == @user.id %>
         <%= link_to "Logout", logout_user_path(@user), method: :get, class: "btn btn-secondary", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #6c757d; background-color: #6c757d; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
+    <% else %>
+        <%= link_to "Send Message", new_message_path(id: @user.id), class: "btn btn-success", style: "text-decoration: none; margin: 5px; padding: 10px 20px; border: 2px solid #28a745; background-color: #28a745; color: #fff; border-radius: 5px; font-weight: bold; display: inline-block; transition: background-color 0.3s, color 0.3s;" %>
     <% end %>
 
   </div>

@@ -1,0 +1,16 @@
+<h1>Your Messages</h1>
+
+<% if @messages.any? %>
+  <ul>
+    <% @messages.each do |message| %>
+      <li>
+        <strong>From:</strong> <%= message.sender.name %> <%=message.sender.last_name%><br>
+        <strong>To:</strong> <%= message.receiver.name %> <%=message.receiver.last_name%><br>
+        <strong>Date:</strong> <%= message.created_at.strftime("%B %e, %Y at %l:%M %p") %><br>
+        <p><strong>Message:</strong> <%= message.content %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>You have no messages.</p>
+<% end %>

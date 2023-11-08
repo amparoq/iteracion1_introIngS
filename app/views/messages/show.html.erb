@@ -1,0 +1,12 @@
+<h1>Conversation with <%= @receiver.username %></h1>
+
+<ul class="messages">
+  <% @messages.each do |message| %>
+    <li class="<%= message.sender == current_user ? 'sent' : 'received' %>">
+      <p><strong><%= message.sender.username %>:</strong></p>
+      <p><%= message.content %></p>
+    </li>
+  <% end %>
+</ul>
+
+<%= render 'form' %>
