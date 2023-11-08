@@ -8,6 +8,7 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
+    #@group= Group.find(group_params[:id])
   end
 
   # GET /groups/new
@@ -65,6 +66,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.fetch(:group, {})
+      params.require(:group).permit(:name, :description, :project_id)
     end
 end
