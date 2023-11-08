@@ -66,7 +66,7 @@
           <%= link_to 'Bandeja de entrada', "/notifications", class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
           <%= link_to 'Buscar Usuarios', search_users_path, class: 'nav-link active', style: "color: black; font-weight: 500; font-size: 20;" %>
           <% if current_user.role == "Supervisor" %>
-            <%= link_to 'Cambiar rol de usuarios', change_role_path, class: 'nav-link', style: "color: black; font-weight: 500; font-size: 20;" %>
+            <%= link_to 'Modificar roles', change_role_path, class: 'nav-link', style: "color: black; font-weight: 500; font-size: 20;" %>
           <% end %>
 
         </div>
