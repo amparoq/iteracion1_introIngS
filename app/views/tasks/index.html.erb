@@ -1,3 +1,21 @@
+<style>
+
+.btn-custom {
+  height: 40px;
+  width: 100px;
+  margin-left: 10px;
+}
+
+.custom-link {
+  color: 'black';
+  text-decoration: none;
+  flex: 1;
+}
+
+
+</style>
+
+
 <div style= "margin-left: 40px; margin-top: 30px;">
 
   <div>
@@ -5,23 +23,25 @@
     <hr>
     <div class="card-container">
       <% @tasks.each do |task| %>
+        <a href="<%= task_path(task) %>" class="custom-link">
         <div class="card mb-3" style="width: 190vh;">
           <div class="card-body">
-            <h5 class="card-title"><b><%= task.name %></b></h5>
+            <h5 class="card-title" style="color: black; "><b><%= task.name %></b></h5>
             <p class="card-text" style="color: #696969"><%= task.start_date %> | <%= task.end_date %></p>
-            <p class="card-text">Creado/a por: <%= task.user.name %></p>
-            <p class="card-text">Descripción: <%= task.description %></p>
+            <p class="card-text" style="color: #333333">Creado/a por: <%= task.user.name %></p>
+            <p class="card-text" style="color: #333333">Descripción: <%= task.description %></p>
             <div class="progress">
               <div class="progress-bar" style="width: <%= task.progress %>%;" aria-valuenow="<%= task.progress %>" aria-valuemin="0" aria-valuemax="100"><%= task.progress %>%</div>
             </div>
             <div style="display: flex;">
-              <a href=<%= edit_task_url(task) %> class= "btn btn-primary" style="margin-top: 10px;">Editar</a>
+              <a href="<%= edit_task_url(task) %>" class="btn btn-primary btn-custom" style="margin-top: 10px;">Editar</a>
               <% if task.user.id == current_user.id %>
-                <%= button_to "Eliminar", task, class: "btn btn-danger", style: "margin-top: 10px;", method: :delete, data: {turbo_method: :delete, turbo_confirm: '¿Estás seguro que quieres eliminar?'}%>
+                <%= button_to "Eliminar", task, class: "btn btn-danger btn-custom", style: "margin-top: 10px;", method: :delete, data: { turbo_method: :delete, turbo_confirm: '¿Estás seguro que quieres eliminar?' } %>
               <% end %>
             </div>
           </div>
         </div>
+        </a>
       <% end %>
     </div>
   </div>

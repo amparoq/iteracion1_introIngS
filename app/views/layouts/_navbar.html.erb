@@ -53,9 +53,42 @@
           color: #FFD700;
         }
 
+        .dropdown {
+          position: relative;
+          display: inline-block;
+          margin-left: 10px;
+        }
+
+        .dropdown-toggle {
+          background-color: #3498db;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          cursor: pointer;
+        }
+
+        .dropdown-menu {
+          display: none;
+          position: absolute;
+          background-color: #fff;
+          border: 1px solid #ccc;
+          min-width: 160px;
+        }
+
+        .dropdown-item {
+          padding: 10px 20px;
+          text-decoration: none;
+          color: #333;
+          display: block;
+        }
+
+        .dropdown-item:hover {
+          background-color: #f0f0f0;
+        }
+
+
 </style>
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="navbar">
@@ -68,6 +101,16 @@
           <% if current_user.role == "Supervisor" %>
             <%= link_to 'Modificar roles', change_role_path, class: 'nav-link', style: "color: black; font-weight: 500; font-size: 20;" %>
           <% end %>
+
+          <div class="dropdown">
+            <button class="dropdown-toggle" id="dropdownMenuButton">Configuración</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a href="<%= new_project_path %>" class="dropdown-item">New Project</a>
+              <a href=<%= new_task_path %> class="dropdown-item">New Task</a>
+              <a href=<%= new_group_path %> class="dropdown-item">New Group</a>
+            </div>
+          </div>
+
 
         </div>
         <div class="navbar-right">
@@ -91,4 +134,25 @@
         </div>
     </div>
 </body>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  const dropdownButton = document.querySelector('.dropdown-toggle');
+  const dropdownMenu = document.querySelector('.dropdown-menu');
+
+  dropdownButton.addEventListener('click', function() {
+    dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+  });
+
+  document.addEventListener('click', function(event) {
+    if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+      dropdownMenu.style.display = 'none';
+    }
+  });
+});
+
+
+</script>
+
 </html>

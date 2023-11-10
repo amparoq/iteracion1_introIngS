@@ -52,21 +52,13 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_importmap_tags %>
   </head>
 
   <body style= "background: #f9f9f9; font-family: roboto, sans-serif;">
     <% if user_signed_in? %>
       <%= render 'layouts/navbar' %>
-      <div class="navbar-container" style="margin-top: 20px;">
-        <a href="<%= new_project_path %>" class="new_project_button">New Project</a>
-      </div>
-      <div class="navbar-container">
-        <a href=<%= new_task_path %> class="btn btn-info new_task_button">New Task</a>
-      </div> 
-      <div class="navbar-container">
-      <a href=<%= new_group_path %> class="btn btn-info new_group_button">New Group</a>
-      </div> 
     <% end %>
     <%= yield %>
   </body>
